@@ -18,7 +18,7 @@ export default function AnimationSwitch() {
 
   return (
     <>
-      <div className="absolute top-10 left-20 flex items-center space-x-2">
+      <div className="absolute top-10 left-5 flex items-center space-x-2 md:left-20">
         <p className="font-semibold">Animation</p>
         <label htmlFor="animation-control ">
           <span className="text-sm">OFF</span>

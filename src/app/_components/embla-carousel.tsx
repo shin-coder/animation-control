@@ -38,7 +38,10 @@ export default function EmblaCarousel({ options }: EmblaProps) {
   const { isA11yEnabled } = useAccessibility();
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: true }),
+    AutoScroll({
+      playOnInit: true,
+      speed: typeof window !== "undefined" && window.innerWidth < 768 ? 0.5 : 1,
+    }),
   ]);
 
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function EmblaCarousel({ options }: EmblaProps) {
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex -ml-4">
             {slides.map(({ id, srcSet }) => (
-              <p className="flex-none basis-100 pl-4" key={id}>
+              <p className="flex-none basis-60 pl-4 md:basis-100" key={id}>
                 <Image src={srcSet} width={800} height={600} alt="" />
               </p>
             ))}
