@@ -10,6 +10,9 @@ export default function AnimationSwitch() {
 
   useEffect(() => {
     setIsMounted(true);
+    if (isA11yEnabled === undefined) {
+      setIsA11yEnabled(true);
+    }
   }, []);
 
   if (!isMounted) {
