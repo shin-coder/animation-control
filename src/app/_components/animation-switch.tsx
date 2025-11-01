@@ -10,7 +10,8 @@ export default function AnimationSwitch() {
 
   useEffect(() => {
     setIsMounted(true);
-    if (isA11yEnabled === undefined) {
+    const stored = localStorage.getItem("accessibility:enabled");
+    if (stored === null) {
       setIsA11yEnabled(true);
     }
   }, []);
