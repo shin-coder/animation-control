@@ -10,37 +10,24 @@ gsap.registerPlugin(ScrambleTextPlugin);
 export default function FirstView() {
   const headRef = useRef<HTMLHeadingElement>(null);
   const { isA11yEnabled } = useAccessibility();
-  const isFirstRender = useRef(true);
-  const [isMounted, setIsMounted] = useState(false);
+  // const isFirstRender = useRef(true);
+  // const [isMounted, setIsMounted] = useState(false);
+
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (!headRef.current || !isA11yEnabled) return;
 
-  useEffect(() => {
-    if (!headRef.current || !isMounted) return;
-
-    if (isA11yEnabled) {
-      // ONの場合はアニメーション実行
-      gsap.to(headRef.current, {
-        duration: 0.5,
-        ease: "sine.in",
-        scrambleText: {
-          text: "Hello world",
-        },
-      });
-    } else {
-      // OFFの場合は即座にテキストを設定
-      gsap.set(headRef.current, {
+    gsap.to(headRef.current, {
+      duration: 0.5,
+      ease: "sine.in",
+      scrambleText: {
         text: "Hello world",
-      });
-    }
-
-    // 初回フラグを下ろす
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    }
-  }, [isA11yEnabled, isMounted]);
+      },
+    });
+  }, [isA11yEnabled]);
 
   return (
     <>

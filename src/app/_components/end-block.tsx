@@ -55,18 +55,15 @@ export default function EndBlock() {
   }, [isA11yEnabled]);
 
   const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isA11yEnabled) return;
+
     e.preventDefault();
 
-    if (isA11yEnabled) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: "#top",
-        ease: "power2.inOut",
-      });
-    } else {
-      // 即座にスクロール
-      document.getElementById("top")?.scrollIntoView();
-    }
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: "#top",
+      ease: "power2.inOut",
+    });
   };
 
   return (

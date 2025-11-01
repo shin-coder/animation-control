@@ -21,7 +21,7 @@ export default function AnimationSwitch() {
       <div className="absolute top-10 left-5 flex items-center space-x-2 md:left-20">
         <p className="font-semibold">Animation</p>
         <label htmlFor="animation-control ">
-          <span className="text-sm">OFF</span>
+          <span className="text-sm">ON</span>
         </label>
         <Switch
           id="animation-control"
@@ -29,7 +29,7 @@ export default function AnimationSwitch() {
           onCheckedChange={setIsA11yEnabled}
         />
         <label htmlFor="animation-control">
-          <span className="text-sm">ON</span>
+          <span className="text-sm">OFF</span>
         </label>
       </div>
     </>
